@@ -44,6 +44,7 @@ then
 fi
 
 echo "Downloading riot-web $RIOT_VERSION"
+cp /www/config.json /tmp/config.json
 cd /tmp
 wget "https://github.com/vector-im/riot-web/releases/download/$RIOT_VERSION/riot-$RIOT_VERSION.tar.gz" -O riot.tar.gz
 
@@ -51,6 +52,7 @@ echo "Unpacking riot-web"
 rm -rf /www
 mkdir -p /www
 tar -zxvf riot.tar.gz --strip-components=1 -C /www
+cp /tmp/config.json /www/config.json
 
 echo "Starting nginx on port $PORT"
 sed -i "s/NOMAD_HTTP_PORT/$PORT/g" /etc/nginx/nginx.conf
