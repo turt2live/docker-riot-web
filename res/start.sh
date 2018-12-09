@@ -1,7 +1,8 @@
 #!/bin/sh
+set -ex
 
 PORT=80
-RIOT_VERSION=v0.14.0-rc.4
+RIOT_VERSION=LATEST
 
 function usage()
 {
@@ -36,6 +37,11 @@ while [ "$1" != "" ]; do
     esac
     shift
 done
+
+if [ "$RIOT_VERSION" = "LATEST" ]
+then
+    RIOT_VERSION=$(curl --silent "https://api.github.com/repos/vector-im/riot-web/releases/latest" | grep '"tag_name":' | sed -E 's/.*"([^"]+)".*/\1/')
+fi
 
 echo "Downloading riot-web $RIOT_VERSION"
 cd /tmp

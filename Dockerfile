@@ -4,10 +4,7 @@ LABEL maintainer="Travis Ralston <travis@t2bot.io>"
 
 COPY res/start.sh /start.sh
 COPY ./res/nginx.conf /tmp/nginx.conf
-RUN apk update \
-    && apk add nginx \
-    && apk add dos2unix \
-    && apk add tar \
+RUN apk add --no-cache nginx dos2unix tar grep sed curl \
     && dos2unix /start.sh \
     && dos2unix /etc/nginx/nginx.conf \
     && chmod +x /start.sh \
