@@ -14,4 +14,4 @@ By default, this will use the latest version of Riot at the time of starting up.
 * Custom riot-web version: `docker run -p 80:80 hstoday/riot-web /start.sh --riot-version=v0.14.0-rc.4`
 * Custom port & version: `docker run -p 8000:8000 hstoday/riot-web /start.sh --port 8000 --riot-version=v0.14.0-rc.4`
 
-Use `-v /path/to/config.json:/var/lib/nginx/html/config.json:ro` to specify a build config for Riot.
+Use `-v /path/to/config.json:/www/config.json:ro` to specify a build config for Riot.
